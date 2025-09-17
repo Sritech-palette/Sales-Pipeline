@@ -1,1 +1,68 @@
 # Sales-Pipeline
+# (Dagster Sales ETL Pipeline)
+
+This project demonstrates a **production-ready ETL pipeline** using Dagster.
+
+## Features
+- Load sales, customer, and product data
+- Clean and transform data
+- Generate sales report
+- Fully orchestrated pipeline with Dagster
+- Visualization of revenue trends and top customers
+
+## Run Locally
+
+1. Install dependencies:
+```bash
+pip install -r requirements.txt
+
+2. Start Dagster UI:
+dagit -f dagster_pipeline/pipeline.py
+
+3. Execute the pipeline from UI or CLI:
+dagster job execute -f dagster_pipeline/pipeline.py -j sales_etl_pipeline
+
+To Run the Pipeline.
+Using Dagster UI:
+dagit -f dagster_pipeline/pipeline.py
+Open the Dagster UI in your browser (http://localhost:3000)
+
+Trigger the sales_etl_pipeline
+
+Using CLI:
+dagster job execute -f dagster_pipeline/pipeline.py -j sales_etl_pipeline
+Transformed sales report will be saved in data/sales_report.csv.
+4. View visualizations:
+Open notebooks/EDA.ipynb in Jupyter Notebook.
+
+Run all cells to see:
+
+Total sales by product
+
+Total sales by region
+
+Top 5 customers by revenue
+
+Transformed sales report will be saved in data/sales_report.csv.
+
+---
+
+## **🔟 .gitignore**
+pycache/
+*.pyc
+data/sales_report.csv
+.env
+
+---
+Technologies Used
+
+- Dagster for workflow orchestration
+
+- Python (pandas, NumPy) for ETL
+
+- Matplotlib & Seaborn for visualization
+
+- CSV as sample data source
+
+
+
