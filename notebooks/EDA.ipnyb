@@ -1,0 +1,39 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Load transformed sales report
+df = pd.read_csv("../data/sales_report.csv")
+
+# Quick look
+print(df.head())
+
+# 1. Total Sales by Product
+product_sales = df.groupby('product_name')['total'].sum().reset_index()
+plt.figure(figsize=(8,5))
+sns.barplot(x='product_name', y='total', data=product_sales, palette="viridis")
+plt.title("Total Sales by Product")
+plt.ylabel("Total Revenue")
+plt.xlabel("Product")
+plt.tight_layout()
+plt.show()
+
+# 2. Total Sales by Region
+region_sales = df.groupby('region')['total'].sum().reset_index()
+plt.figure(figsize=(8,5))
+sns.barplot(x='region', y='total', data=region_sales, palette="magma")
+plt.title("Total Sales by Region")
+plt.ylabel("Total Revenue")
+plt.xlabel("Region")
+plt.tight_layout()
+plt.show()
+
+# 3. Top Customers by Revenue
+top_customers = df.groupby('name')['total'].sum().sort_values(ascending=False).head(5)
+plt.figure(figsize=(8,5))
+sns.barplot(x=top_customers.index, y=top_customers.values, palette="coolwarm")
+plt.title("Top 5 Customers by Revenue")
+plt.ylabel("Total Revenue")
+plt.xlabel("Customer")
+plt.tight_layout()
+plt.show()
